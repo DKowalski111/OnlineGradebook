@@ -7,8 +7,7 @@ import com.example.onlinegradebook.model.Student;
 import com.example.onlinegradebook.view.SchoolClassView;
 import com.example.onlinegradebook.view.StudentView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,6 +29,8 @@ import java.util.List;
  */
 
 public class Controller {
+    private static School school;
+
 
     /**
      * Start of a program method.
@@ -38,90 +39,13 @@ public class Controller {
      * Method creates School class objects and Student class objects.
      * Method calls SchoolView static method to display menu for user.
      */
+    public static void setSchool(School schoolInput){
+        school = schoolInput;
+    }
     public static List<SchoolClass> startProgram(){
-        School school = new School();
-        school.setName("Szkola Podstawowa nr 9 im. Orlat Lwowskich w Tarnowie");
-
-        List<Student> studenci1D = new ArrayList<>();
-        studenci1D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci1D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci1D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci1D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci1D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci1D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci1D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci1D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-        List<Student> studenci2D = new ArrayList<>();
-        studenci2D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci2D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci2D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci2D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci2D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci2D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci2D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci2D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-        List<Student> studenci3D = new ArrayList<>();
-        studenci3D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci3D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci3D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci3D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci3D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci3D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci3D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci3D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-        List<Student> studenci4D = new ArrayList<>();
-        studenci4D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci4D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci4D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci4D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci4D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci4D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci4D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci4D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-        List<Student> studenci5D = new ArrayList<>();
-        studenci5D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci5D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci5D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci5D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci5D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci5D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci5D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci5D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-        List<Student> studenci6D = new ArrayList<>();
-        studenci6D.add(new Student("Dawid", "Kowalski", "300699", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci6D.add(new Student("Michal", "Jordan", "891023", Arrays.asList(6, 6, 4, 1, 4, 5, 6, 3, 3, 3)));
-        studenci6D.add(new Student("Janusz", "Biedalski", "102394", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci6D.add(new Student("Wojciech", "Malina", "123456", Arrays.asList(1, 2, 4, 2, 4, 5, 3)));
-        studenci6D.add(new Student("Karol", "Szary", "901238", Arrays.asList(6, 6, 6, 6, 6, 6, 6)));
-        studenci6D.add(new Student("Amadeusz", "Da Vinci", "901345", Arrays.asList(1, 1, 1, 1, 1, 1, 1)));
-        studenci6D.add(new Student("Lobert", "Rewandowski", "420024", Arrays.asList(2, 2, 2, 2, 2, 2, 2,2)));
-        studenci6D.add(new Student("Jonasz", "Koran", "502370", Arrays.asList(3,3,3,3,3,3,3,3,3)));
-
-
-        SchoolClass Id = new SchoolClass("1D", studenci1D);
-        SchoolClass IId = new SchoolClass("2D", studenci2D);
-        SchoolClass IIId = new SchoolClass("3D", studenci3D);
-        SchoolClass IVd = new SchoolClass("4D", studenci4D);
-        SchoolClass Vd = new SchoolClass("5D", studenci5D);
-        SchoolClass VId = new SchoolClass("6D", studenci6D);
-
-        school.addSchoolClass(Id);
-        school.addSchoolClass(IId);
-        school.addSchoolClass(IIId);
-        school.addSchoolClass(IVd);
-        school.addSchoolClass(Vd);
-        school.addSchoolClass(VId);
-
-
-
-
         //SchoolView.viewMenu(school);
-        return school.getSchoolClasses();
+        Controller.school.getSchoolClasses().sort(Comparator.comparing(SchoolClass::getName));
+        return Controller.school.getSchoolClasses();
     }
 
     /**
@@ -252,5 +176,14 @@ public class Controller {
     public static void addClass(School school, String schoolClassName) {
         SchoolClass newSchoolClass = new SchoolClass(schoolClassName);
         school.addSchoolClass(newSchoolClass);
+    }
+
+    public static void addClass(String schoolClassName) {
+        SchoolClass newSchoolClass = new SchoolClass(schoolClassName);
+        Controller.school.addSchoolClass(newSchoolClass);
+    }
+
+    public static void removeSchoolClass(SchoolClass schoolClass) throws ElementDoesNotExistException {
+        school.removeSchoolClass(schoolClass.getName());
     }
 }

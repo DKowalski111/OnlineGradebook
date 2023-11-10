@@ -136,6 +136,6 @@ public class SchoolClass {
      */
     @Override
     public String toString() {
-        return "Klasa: " + this.name + "\nLiczba uczniow: " + this.students.size();
+        return "Klasa: " + this.name;
     }
 }

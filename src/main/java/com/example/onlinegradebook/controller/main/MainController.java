@@ -1,5 +1,7 @@
-package com.example.onlinegradebook.controller;
+package com.example.onlinegradebook.controller.main;
 
+import com.example.onlinegradebook.controller.Controller;
+import com.example.onlinegradebook.exception.ElementDoesNotExistException;
 import com.example.onlinegradebook.model.SchoolClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class MainController {
     @FXML
     public VBox mainVBox;
     @FXML
@@ -29,40 +31,27 @@ public class HelloController {
     private ListView<SchoolClass> classesListView;
     public void initialize(){
         classesListView.getItems().addAll(Controller.startProgram());
-
-        headerText.getStyleClass().add("main-text");
-        mainVBox.getStyleClass().add("body");
-        deleteButton.getStyleClass().add("button-delete");
-        addButon.getStyleClass().add("button-add");
-        pickButton.getStyleClass().add("button-pick");
-
         if (!classesListView.getItems().isEmpty()) {
             classesListView.getSelectionModel().selectFirst();
         }
     }
 
     @FXML
-    private void handleDeleteButtonClick(){
+    private void handleDeleteButtonClick() throws ElementDoesNotExistException {
+        Controller.removeSchoolClass(classesListView.getSelectionModel().getSelectedItem());
         classesListView.getItems().remove(classesListView.getSelectionModel().getSelectedItem());
     }
     @FXML
     private void handleAddButtonClick(ActionEvent event){
         try {
-            // Load the new FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/view/YourFXMLFile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/main/add-schoolclass-view.fxml"));
             Parent root = loader.load();
-
-            // Create a new Scene
             Scene newScene = new Scene(root);
-
-            // Get the Stage from the event source
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-
-            // Set the new Scene
             stage.setScene(newScene);
 
         } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace();
         }
     }
 

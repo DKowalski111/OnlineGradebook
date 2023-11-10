@@ -40,9 +40,8 @@ public class School {
         this.schoolClasses = new ArrayList<>();
     }
 
-    public School(String name, List<SchoolClass> schoolClasses) {
+    public School(String name) {
         this.name = name;
-        this.schoolClasses = schoolClasses;
     }
 
     /**

@@ -47,3 +47,36 @@
     -fx-border-color: -texts-borders-color-win;
     -fx-text-fill: -texts-borders-color-win;
 }
+
+/* fancy-listview.css */
+
+.list-view {
+    -fx-background-color: #f0f0f0; /* Set background color */
+}
+
+.list-cell {
+    -fx-background-color: #ffffff; /* Set cell background color */
+    -fx-border-color: #d3d3d3; /* Set border color */
+    -fx-border-width: 0 0 1 0; /* Set bottom border only */
+    -fx-padding: 10; /* Set padding */
+}
+
+.list-cell:hover {
+    -fx-background-color: #e0e0e0; /* Set hover background color */
+}
+
+.list-cell:selected {
+    -fx-background-color: #b8daff; /* Set selected cell background color */
+    -fx-border-color: #73a8f9; /* Set selected cell border color */
+}
+
+/* Customize the text color */
+.list-cell .label {
+    -fx-text-fill: #333333;
+}
+
+/* Add a subtle shadow effect on hover */
+.list-cell:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+}
+

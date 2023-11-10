@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="mainVBox" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.onlinegradebook.controller.HelloController">
+<VBox fx:id="mainVBox" prefHeight="600.0" prefWidth="800.0" spacing="20.0" styleClass="body" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.onlinegradebook.controller.main.MainController">
    <stylesheets>
       <URL value="@main-view.css" />
    </stylesheets>
    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
    <HBox alignment="CENTER" prefHeight="30.0" prefWidth="760.0">
       <children>
-         <Label fx:id="headerText" alignment="CENTER" prefHeight="26.0" prefWidth="576.0" text="Online Gradebook">
+         <Label fx:id="headerText" alignment="CENTER" prefHeight="26.0" prefWidth="576.0" styleClass="main-text" stylesheets="@main-view.css" text="Online Gradebook">
             <font>
                <Font name="Corbel Bold" size="36.0" />
             </font>
@@ -30,12 +30,12 @@
          <ListView fx:id="classesListView" maxWidth="815.0" prefHeight="434.0" prefWidth="815.0" />
          <VBox alignment="CENTER" prefHeight="341.0" prefWidth="342.0" spacing="20">
             <children>
-               <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#handleDeleteButtonClick" prefHeight="42.0" prefWidth="120" text="Delete selected" textAlignment="CENTER" textFill="#000000e5">
+               <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#handleDeleteButtonClick" prefHeight="42.0" prefWidth="120" styleClass="button-delete" stylesheets="@main-view.css" text="Delete selected" textAlignment="CENTER" textFill="#000000e5">
                   <font>
                      <Font name="Corbel Bold" size="12.0" />
                   </font>
                </Button>
-               <Button fx:id="pickButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="120" text="Pick selected" textAlignment="CENTER" textFill="#000000e5">
+               <Button fx:id="pickButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="120" styleClass="button-pick" stylesheets="@main-view.css" text="Pick selected" textAlignment="CENTER" textFill="#000000e5">
                   <font>
                      <Font name="Corbel Bold" size="12.0" />
                   </font>
@@ -46,7 +46,7 @@
    </HBox>
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20">
       <children>
-         <Button fx:id="addButon" mnemonicParsing="false" prefHeight="42.0" prefWidth="86.0" text="Add" textAlignment="CENTER" textFill="#000000e5" onAction="#handleAddButtonClick">
+         <Button fx:id="addButon" mnemonicParsing="false" onAction="#handleAddButtonClick" prefHeight="42.0" prefWidth="86.0" styleClass="button-add" stylesheets="@main-view.css" text="Add" textAlignment="CENTER" textFill="#000000e5">
             <font>
                <Font name="Corbel Bold" size="12.0" />
             </font>
