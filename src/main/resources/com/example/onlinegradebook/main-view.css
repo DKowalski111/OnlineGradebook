@@ -1,0 +1,49 @@
+.root{
+    -texts-borders-color-win: #2b8a3e;
+    -texts-borders-color-lose: #c92a2a;
+    -texts-borders-color-pick: rgb(25, 113, 194);
+    -text-fill-color-main: #f08c00;
+    -background-color-main: #fff9db;
+    -background-color-lose: #ffe3e3;
+    -background-color-win: #ebfbee;
+    -background-color-pick: #e7f5ff;
+    -default-color: rgb(233,236,239);
+    -text-fill-color: rgb(33,37,41);
+    -empty-border-color: rgb(33,37,41);
+}
+
+.main-text{
+    -fx-text-fill: -text-fill-color-main;
+}
+
+.body{
+    -fx-background-color: -background-color-main;
+}
+
+.button-delete,
+.button-pick,
+.button-add{
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.button-delete{
+    -fx-background-color: -background-color-lose;
+    -fx-border-color: -texts-borders-color-lose;
+    -fx-text-fill: -texts-borders-color-lose;
+}
+
+.button-pick{
+    -fx-background-color: -background-color-pick;
+    -fx-border-color: -texts-borders-color-pick;
+    -fx-text-fill: -texts-borders-color-pick;
+}
+
+.button-add{
+    -fx-background-color: -background-color-win;
+    -fx-border-color: -texts-borders-color-win;
+    -fx-text-fill: -texts-borders-color-win;
+}
