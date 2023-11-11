@@ -1,0 +1,100 @@
+.root{
+    -texts-borders-color-correct: #2b8a3e;
+    -texts-borders-color-wrong: #c92a2a;
+    -texts-borders-color-pick: rgb(25, 113, 194);
+    -texts-borders-color-back: #5f3dc4;
+    -texts-borders-color-info: #0b7285;
+    -text-fill-color-main: #f08c00;
+    -background-color-main: #fff9db;
+    -background-color-wrong: #ffe3e3;
+    -background-color-correct: #ebfbee;
+    -background-color-back: #e5dbff;
+    -background-color-pick: #e7f5ff;
+    -background-color-info: #c5f6fa;
+    -default-color: rgb(233,236,239);
+    -text-fill-color: rgb(33,37,41);
+    -empty-border-color: rgb(33,37,41);
+}
+
+.main-text{
+    -fx-text-fill: -text-fill-color-main;
+}
+
+.body{
+    -fx-background-color: -background-color-main;
+}
+
+.button-wrong,
+.button-pick,
+.button-correct,
+.button-back,
+.button-info{
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.button-wrong{
+    -fx-background-color: -background-color-wrong;
+    -fx-border-color: -texts-borders-color-wrong;
+    -fx-text-fill: -texts-borders-color-wrong;
+}
+
+.button-pick{
+    -fx-background-color: -background-color-pick;
+    -fx-border-color: -texts-borders-color-pick;
+    -fx-text-fill: -texts-borders-color-pick;
+}
+
+.button-correct{
+    -fx-background-color: -background-color-correct;
+    -fx-border-color: -texts-borders-color-correct;
+    -fx-text-fill: -texts-borders-color-correct;
+}
+
+.button-back{
+    -fx-background-color: -background-color-back;
+    -fx-border-color: -texts-borders-color-back;
+    -fx-text-fill: -texts-borders-color-back;
+}
+
+.button-info{
+    -fx-background-color: -background-color-info;
+    -fx-border-color: -texts-borders-color-info;
+    -fx-text-fill: -texts-borders-color-info;
+}
+
+
+
+.list-view {
+    -fx-background-color: #f0f0f0;
+}
+
+.list-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+.list-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.list-cell:selected {
+    -fx-background-color: #b8daff;
+    -fx-border-color: #73a8f9;
+}
+
+
+.list-cell .label {
+    -fx-text-fill: #333333;
+}
+
+
+.list-cell:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+}
+

@@ -64,7 +64,7 @@ public class SchoolClass {
      * @param id index of the Student class object a user wants to remove
      * @throws ElementDoesNotExistException when the provided id as the parameter is not found
      */
-    public void removeStudent(String id) throws ElementDoesNotExistException{
+    public void removeStudent(Long id) throws ElementDoesNotExistException{
         Iterator<Student> iterator = students.iterator();
         while (iterator.hasNext()) {
             Student student = iterator.next();

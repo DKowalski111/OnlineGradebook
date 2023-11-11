@@ -9,4 +9,8 @@ module com.example.onlinegradebook {
     opens com.example.onlinegradebook.controller to javafx.fxml;
     exports com.example.onlinegradebook.controller.main;
     opens com.example.onlinegradebook.controller.main to javafx.fxml;
+    exports com.example.onlinegradebook.controller.schoolClass;
+    opens com.example.onlinegradebook.controller.schoolClass to javafx.fxml;
+    exports com.example.onlinegradebook.controller.student;
+    opens com.example.onlinegradebook.controller.student to javafx.fxml;
 }

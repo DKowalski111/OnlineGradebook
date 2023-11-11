@@ -1,8 +1,8 @@
-package com.example.onlinegradebook.controller.schoolClass;
+package com.example.onlinegradebook.controller.student;
 
 import com.example.onlinegradebook.controller.Controller;
 import com.example.onlinegradebook.exception.ElementDoesNotExistException;
-import com.example.onlinegradebook.model.Student;
+import com.example.onlinegradebook.model.Grade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,22 +18,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SchoolClassController {
+public class StudentController {
     @FXML
     public VBox mainVBox;
     @FXML
     public Button addButton;
     @FXML
-    public Button pickButton;
-    @FXML
     public Label headerText;
     @FXML
-    private ListView<Student> studentsListView;
+    private ListView<Grade> gradesListView;
 
     public void initialize(){
-        studentsListView.getItems().addAll(Controller.getStudentsFromCurrentSchoolClass());
-        if (!studentsListView.getItems().isEmpty()) {
-            studentsListView.getSelectionModel().selectFirst();
+        gradesListView.getItems().addAll(Controller.getGradesFromCurrentStudent());
+        if (!gradesListView.getItems().isEmpty()) {
+            gradesListView.getSelectionModel().selectFirst();
         }
         mainVBox.setOnKeyPressed(event -> {
             if (event.isControlDown() && event.getCode() == KeyCode.I) {
@@ -44,13 +42,13 @@ public class SchoolClassController {
 
     @FXML
     private void handleDeleteButtonClick() throws ElementDoesNotExistException {
-        Controller.removeStudent(studentsListView.getSelectionModel().getSelectedItem());
-        studentsListView.getItems().remove(studentsListView.getSelectionModel().getSelectedItem());
+        Controller.removeGrade(gradesListView.getSelectionModel().getSelectedItem());
+        gradesListView.getItems().remove(gradesListView.getSelectionModel().getSelectedItem());
     }
     @FXML
     private void handleAddButtonClick(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/schoolClass/add-student-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/student/add-grade-view.fxml"));
             Parent root = loader.load();
             Scene newScene = new Scene(root);
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -61,26 +59,9 @@ public class SchoolClassController {
         }
     }
 
-    @FXML
-    private void handlePickButtonClick(ActionEvent event){
-        if (!studentsListView.getItems().isEmpty() &&  !studentsListView.getSelectionModel().getSelectedItems().isEmpty()) {
-            try {
-                Controller.setCurrentStudent(studentsListView.getSelectionModel().getSelectedItem());
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/student/student-view.fxml"));
-                Parent root = loader.load();
-                Scene newScene = new Scene(root);
-                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                stage.setScene(newScene);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public void handleGoBackButtonClick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/main/main-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/schoolClass/schoolClass-view.fxml"));
             Parent root = loader.load();
             Scene newScene = new Scene(root);
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -92,7 +73,7 @@ public class SchoolClassController {
     }
 
     public void handleInfoButtonClick(ActionEvent event) {
-        showAlert("Information", "If you want to pick or delete specific student from the list view, you have to click on that specific student in the list view.");
+        showAlert("Information", "If you want to delete specific grade from the list view, you have to click on that specific grade in the list view.");
     }
 
     private void showAlert(String title, String content) {

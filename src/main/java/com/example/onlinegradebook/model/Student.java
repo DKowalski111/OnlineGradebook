@@ -3,6 +3,7 @@ import com.example.onlinegradebook.exception.ElementDoesNotExistException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -23,6 +24,7 @@ import java.util.List;
  */
 
 public class Student {
+    private static Long lastStudentsId = 100000L;
     /**
      * First name of the student.
      */
@@ -36,29 +38,29 @@ public class Student {
     /**
      * Index of the student.
      */
-    private String id;
+    private Long id;
 
     /**
      * List of student's grades.
      */
-    private List<Integer> grades;
+    private List<Grade> grades;
 
     public Student() {
+        this.id = lastStudentsId++;
         this.grades = new ArrayList<>();
     }
 
-    public Student(String firstName, String lastName, String id, List<Integer> grades) {
+    public Student(String firstName, String lastName, List<Grade> grades) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = id;
+        this.id = lastStudentsId++;
         this.grades = new ArrayList<>();
         this.grades.addAll(grades);
     }
-
-    public Student(String firstName, String lastName, String id) {
+    public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = id;
+        this.id = lastStudentsId++;
         this.grades = new ArrayList<>();
     }
 
@@ -67,8 +69,8 @@ public class Student {
      * @param grade grade to be added
      * @throws ElementDoesNotExistException when provided grade is not valid ( has to be between 1 and 6 )
      */
-    public void addGrade(int grade) throws ElementDoesNotExistException {
-        if(grade <= 6 && grade >= 1){
+    public void addGrade(Grade grade) throws ElementDoesNotExistException {
+        if(grade.getValue() <= 6 && grade.getValue() >= 1){
             this.grades.add(grade);
         }
         else {
@@ -81,10 +83,13 @@ public class Student {
      * @param indexOfGrade index of the grade in the grades list to be removed
      * @throws ElementDoesNotExistException when the grade user wants to delete of id provided in the param is not found
      */
-    public void removeGrade(int indexOfGrade) throws ElementDoesNotExistException{
-        if(this.grades.size() > indexOfGrade){
-            this.grades.remove(indexOfGrade);
-        }else throw new ElementDoesNotExistException("Nie znaleziono takiego obiektu: " + indexOfGrade);
+    public void removeGrade(Long indexOfGrade) throws ElementDoesNotExistException{
+        for(Grade grade : grades){
+            if(Objects.equals(grade.getId(), indexOfGrade)){
+                grades.remove(grade);
+                break;
+            }
+        }
     }
 
     /**
@@ -128,7 +133,7 @@ public class Student {
      *
      * @return The student ID.
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -137,7 +142,7 @@ public class Student {
      *
      * @param id The new student ID.
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -146,7 +151,7 @@ public class Student {
      *
      * @return The list of grades.
      */
-    public List<Integer> getGrades() {
+    public List<Grade> getGrades() {
         return grades;
     }
 
@@ -155,7 +160,7 @@ public class Student {
      *
      * @param grades The new list of grades.
      */
-    public void setGrades(List<Integer> grades) {
+    public void setGrades(List<Grade> grades) {
         this.grades = grades;
     }
 

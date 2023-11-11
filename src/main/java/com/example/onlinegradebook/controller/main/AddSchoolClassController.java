@@ -6,9 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -16,23 +17,23 @@ import java.io.IOException;
 
 public class AddSchoolClassController {
     @FXML
-
     public Button saveButton;
     @FXML
     public ChoiceBox numberChoiceBox;
     @FXML
     public ChoiceBox letterChoiceBox;
     @FXML
-    private VBox mainVBox;
+    public VBox mainVBox;
 
     @FXML
-    private Label headerText;
+    public void initialize() {
+        mainVBox.setOnKeyPressed(event -> {
+            if (event.isControlDown() && event.getCode() == KeyCode.I) {
+                handleInfoButtonClick(new ActionEvent());
+            }
+        });
+    }
 
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button discardButton;
     public void goHome(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/onlinegradebook/main/main-view.fxml"));
@@ -56,7 +57,28 @@ public class AddSchoolClassController {
         if(firstChoiceValue != null && secondChoiceValue != null){
             Controller.addClass(firstChoiceValue+secondChoiceValue);
             goHome(event);
+        } else {
+            showAlertError("Invalid input", "Text fields cannot be empty.");
         }
+    }
 
+    public void handleInfoButtonClick(ActionEvent event) {
+        showAlertInfo("Information", "To add new school class, you need to enter the year and the name for the new school class.");
+    }
+
+    private void showAlertInfo(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showAlertError(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
